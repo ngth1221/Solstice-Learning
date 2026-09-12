@@ -477,7 +477,7 @@ section{padding-block:clamp(3.5rem,8vw,6.5rem);scroll-margin-top:4.1rem}
       <div class="step">
         <span class="n">2</span>
         <h3 data-en="Weekly sessions" data-zh="每周课程" data-tw="每週課程">Weekly sessions</h3>
-        <p data-en="One-on-one online, at a fixed weekly time you choose. Sessions follow your child's actual class, assignments, and upcoming tests." data-zh="线上一对一授课，时间由您选定并固定每周进行。课程内容紧扣孩子在校的进度、作业与即将到来的考试。" data-tw="線上一對一授課，時間由您選定並固定每週進行。課程內容緊扣孩子在校的進度、作業與即將到來的考試。">One-on-one online, at a fixed weekly time you choose. Sessions follow your child's actual class, assignments, and upcoming tests.</p>
+        <p data-en="One-on-one online, for one hour at a fixed weekly time you choose. Sessions follow your child's actual class, assignments, and upcoming tests." data-zh="每节一小时的线上一对一授课，时间由您选定并固定每周进行。课程内容紧扣孩子在校的进度、作业与即将到来的考试。" data-tw="每節一小時的線上一對一授課，時間由您選定並固定每週進行。課程內容緊扣孩子在校的進度、作業與即將到來的考試。">One-on-one online, for one hour at a fixed weekly time you choose. Sessions follow your child's actual class, assignments, and upcoming tests.</p>
       </div>
       <div class="step">
         <span class="n">3</span>
@@ -492,12 +492,12 @@ section{padding-block:clamp(3.5rem,8vw,6.5rem);scroll-margin-top:4.1rem}
 <section id="pricing">
   <div class="wrap">
     <h2 data-en="Pricing" data-zh="收费" data-tw="收費">Pricing</h2>
-    <p data-en="Grades 9 to 12. Every rate below is per student, per online session, for one subject." data-zh="九至十二年级 · 所有价钱均为每位学生每堂网课收费 · 单科收费" data-tw="九至十二年級 · 所有價錢均爲每位學生每堂網課收費 · 單科收費">Grades 9 to 12. Every rate below is per student, per online session, for one subject.</p>
+    <p data-en="Grades 9 to 12. One session is one hour. Every rate below is per student, per online session, for one subject." data-zh="九至十二年级 · 每节课为一小时 · 所有价钱均为每位学生每堂网课收费 · 单科收费" data-tw="九至十二年級 · 每節課為一小時 · 所有價錢均爲每位學生每堂網課收費 · 單科收費">Grades 9 to 12. One session is one hour. Every rate below is per student, per online session, for one subject.</p>
 
     <p class="from-rate">
       <span data-en="Semester plans from" data-zh="学期计划低至" data-tw="學期計劃低至">Semester plans from</span>
       <strong>$35</strong>
-      <span data-en="per session" data-zh="每堂" data-tw="每堂">per session</span>
+      <span data-en="per one-hour session" data-zh="每小时课堂" data-tw="每小時課堂">per one-hour session</span>
     </p>
 
     <div class="rate-wrap" tabindex="0" role="region" aria-label="Session rates">
@@ -583,7 +583,10 @@ section{padding-block:clamp(3.5rem,8vw,6.5rem);scroll-margin-top:4.1rem}
     <h2 data-en="Book a free consult" data-zh="预约免费咨询" data-tw="預約免費諮詢">Book a free consult</h2>
     <p data-en="Tell us the course and what is going wrong. We will reply within one school day." data-zh="请告知科目及目前遇到的困难，我们会在一个上课日内回复。" data-tw="請告知科目及目前遇到的困難，我們會在一個上課日內回覆。">Tell us the course and what is going wrong. We will reply within one school day.</p>
 
-    <form class="form" id="inquiry" novalidate>
+    <form class="form" id="inquiry" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+      <input type="hidden" name="form-name" value="inquiry">
+      <input type="hidden" name="subject" value="New Solstice Learning inquiry">
+      <p hidden><label>Do not fill this out: <input name="bot-field"></label></p>
       <div class="field">
         <label for="f-name" data-en="Parent or student name" data-zh="家长或学生姓名" data-tw="家長或學生姓名">Parent or student name</label>
         <input id="f-name" name="name" type="text" autocomplete="name" required>
@@ -785,13 +788,11 @@ section{padding-block:clamp(3.5rem,8vw,6.5rem);scroll-margin-top:4.1rem}
     for (var s = 0; s < sections.length; s++) { observer.observe(sections[s]); }
   }
 
-  /* ---------- enquiry form ----------
-     No backend is wired up yet. Point `action` at a form service
-     (Formspree, Netlify Forms, Basin) and delete this handler. */
+  /* ---------- enquiry form ---------- */
   var form = document.getElementById("inquiry");
   var msg = document.getElementById("formMsg");
 
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     var name = document.getElementById("f-name").value.trim();
@@ -801,17 +802,20 @@ section{padding-block:clamp(3.5rem,8vw,6.5rem);scroll-margin-top:4.1rem}
       "en": {
         fill: "Please fill in your name and email.",
         bad:  "Please enter a valid email address.",
-        none: "The form is not connected to a backend yet, so nothing was sent."
+        sent: "Thank you — your inquiry has been sent.",
+        error: "We could not send your inquiry. Please try again."
       },
       "zh-Hans": {
         fill: "请填写姓名与电子邮箱。",
         bad:  "请输入有效的电子邮箱地址。",
-        none: "表单尚未连接后端，暂时无法发送。"
+        sent: "谢谢，您的咨询已发送。",
+        error: "咨询发送失败，请重试。"
       },
       "zh-Hant": {
         fill: "請填寫姓名與電郵地址。",
         bad:  "請輸入有效的電郵地址。",
-        none: "表單尚未連接後端，暫時無法發送。"
+        sent: "謝謝，您的諮詢已發送。",
+        error: "諮詢發送失敗，請重試。"
       }
     };
     var t = COPY[document.documentElement.lang] || COPY.en;
@@ -819,7 +823,24 @@ section{padding-block:clamp(3.5rem,8vw,6.5rem);scroll-margin-top:4.1rem}
     if (!name || !email) { msg.textContent = t.fill; return; }
     if (email.indexOf("@") < 1 || email.indexOf(".") < 0) { msg.textContent = t.bad; return; }
 
-    msg.textContent = t.none;
+    var button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    msg.textContent = "";
+
+    try {
+      var response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(new FormData(form)).toString()
+      });
+      if (!response.ok) { throw new Error("Form submission failed"); }
+      form.reset();
+      msg.textContent = t.sent;
+    } catch (error) {
+      msg.textContent = t.error;
+    } finally {
+      button.disabled = false;
+    }
   });
 })();
 </script>
