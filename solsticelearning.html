@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solstice Learning | Grade 9–12 tutoring for the BC curriculum</title>
+<meta name="description" content="Online one-on-one tutoring for BC Grade 9–12 students. Biology, Chemistry, Pre-Calculus, Calculus, Social Studies, Economics and English Language Learning support, taught to the BC provincial curriculum.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&amp;family=Noto+Serif+SC:wght@400;600;700&amp;family=Noto+Sans+SC:wght@400;500&amp;family=Noto+Serif+TC:wght@400;600;700&amp;family=Noto+Sans+TC:wght@400;500&amp;display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#12332E;
+  --ink-deep:#0D2622;
+  --paper:#FFFFFF;
+  --surface:#EFF3F1;
+  --line:#D3DDD9;
+  --text:#1A2320;
+  --muted:#566762;
+  --brass:#C8A951;
+  --brass-dark:#8C6F22;
+
+  --serif:"Source Serif 4","Noto Serif SC",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Helvetica,Arial,sans-serif;
+
+  --measure:64ch;
+  --pad:clamp(1.25rem,5vw,4.5rem);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;background:var(--paper);color:var(--text);
+  font-family:var(--sans);
+  font-size:clamp(1rem,0.96rem + 0.2vw,1.0625rem);
+  line-height:1.65;
+}
+html[lang="zh-Hans"] body,html[lang="zh-Hant"] body{line-height:1.8}
+html[lang="zh-Hant"]{
+  --serif:"Source Serif 4","Noto Serif TC","PingFang TC","Microsoft JhengHei",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",Helvetica,Arial,sans-serif;
+}
+
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;margin:0;letter-spacing:-0.01em}
+h1{font-size:clamp(2.1rem,1.4rem + 3.2vw,3.9rem)}
+h2{font-size:clamp(1.6rem,1.25rem + 1.6vw,2.5rem)}
+h3{font-size:1.15rem;line-height:1.3}
+p{margin:0 0 1rem;max-width:var(--measure)}
+a{color:inherit}
+
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:76rem;margin-inline:auto;padding-inline:var(--pad)}
+section{padding-block:clamp(3.5rem,8vw,6.5rem);scroll-margin-top:4.1rem}
+.tint{background:var(--surface)}
+
+.skip{position:absolute;left:-9999px;top:0;background:var(--brass);color:var(--ink);padding:.7rem 1.1rem;z-index:100;font-weight:600}
+.skip:focus{left:.6rem;top:.6rem}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:var(--ink);color:#EAF2EF;border-bottom:1px solid rgba(255,255,255,.12)}
+.nav-in{display:flex;align-items:center;gap:.8rem;min-height:4.1rem}
+/* the bar needs tighter gutters than the content sections */
+.nav .wrap{padding-inline:clamp(1rem,3vw,2rem)}
+.brand{display:flex;align-items:center;gap:.55rem;font-family:var(--serif);font-weight:700;font-size:1.16rem;text-decoration:none;letter-spacing:-0.01em;white-space:nowrap}
+.brand em{color:var(--brass);font-style:normal}
+
+.logo{height:2.6rem;width:auto;flex:none;display:block}
+.logo-sun{fill:var(--brass)}
+.logo-dial{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linecap:round}
+.logo-nib{fill:var(--ink)}
+.logo-book{fill:#EAF2EF}
+.logo-cover{fill:#EAF2EF;fill-opacity:.55}
+
+/* tabs sit immediately beside the wordmark */
+.tabs{display:none;align-items:center;gap:.15rem}
+@media(min-width:64rem){.tabs{display:flex}}
+.tabs a{
+  text-decoration:none;font-size:.95rem;color:#CBDAD5;
+  padding:.45rem .62rem;border-radius:3px 3px 0 0;
+  border-bottom:2px solid transparent;white-space:nowrap;
+}
+.tabs a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.tabs a[aria-current="true"]{color:#fff;border-bottom-color:var(--brass)}
+
+.nav-end{display:flex;align-items:center;gap:.8rem;margin-left:auto}
+
+.menu-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:2.4rem;height:2.4rem;padding:0;cursor:pointer;
+  background:transparent;color:#EAF2EF;
+  border:1px solid rgba(255,255,255,.32);border-radius:3px;
+}
+.menu-btn:hover{border-color:var(--brass)}
+@media(min-width:64rem){.menu-btn{display:none}}
+
+.mobile-nav{background:var(--ink-deep);border-top:1px solid rgba(255,255,255,.14)}
+@media(min-width:64rem){.mobile-nav{display:none}}
+.mobile-nav ul{list-style:none;margin:0;padding:.25rem 0 .75rem}
+.mobile-nav li+li{border-top:1px solid rgba(255,255,255,.1)}
+.mobile-nav a{display:block;padding:.9rem 0;text-decoration:none;color:#CBDAD5;font-size:1rem}
+.mobile-nav a:hover{color:#fff}
+
+.lang{display:flex;border:1px solid rgba(255,255,255,.32);border-radius:999px;overflow:hidden}
+.lang button{font:inherit;font-size:.84rem;font-weight:500;background:transparent;color:#CBDAD5;border:0;cursor:pointer;padding:.34rem .78rem;white-space:nowrap}
+.lang button[aria-pressed="true"]{background:var(--brass);color:var(--ink);font-weight:600}
+.lang button+button{border-left:1px solid rgba(255,255,255,.28)}
+.lg-short{display:none}
+@media(max-width:30rem){.lg-full{display:none}.lg-short{display:inline}}
+
+.btn{display:inline-block;text-decoration:none;font:inherit;font-weight:600;padding:.82rem 1.5rem;border-radius:3px;border:1px solid transparent;cursor:pointer}
+.btn-solid{background:var(--brass);color:#231C00;border-color:var(--brass)}
+.btn-solid:hover{background:#D8BC6B}
+.btn-ghost{background:transparent;color:#EAF2EF;border-color:rgba(255,255,255,.42)}
+.btn-ghost:hover{border-color:var(--brass);color:#fff}
+.nav .btn{padding:.55rem 1.05rem;font-size:.92rem;white-space:nowrap}
+/* below the tab breakpoint the hamburger panel and the hero both carry
+   the consult CTA, so the duplicate in the bar is dropped for room */
+@media(max-width:63.99rem){
+  .nav .btn{display:none}
+}
+@media(max-width:26rem){
+  .brand{font-size:.92rem;gap:.4rem}
+  .logo{height:1.55rem}
+  .nav-in{gap:.45rem}
+  .nav .wrap{padding-inline:.9rem}
+  .lang button{padding:.3rem .55rem;font-size:.78rem}
+  .menu-btn{width:2.15rem;height:2.15rem}
+}
+
+/* ---------- hero ---------- */
+.hero{background:var(--ink);color:#EAF2EF;padding-block:clamp(3.5rem,9vw,6rem)}
+.hero h1{color:#fff;max-width:17ch}
+.hero .lede{color:#B9CCC6;font-size:clamp(1.05rem,1rem + 0.35vw,1.24rem);max-width:50ch;margin-top:1.4rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:2.1rem}
+
+/* marquee course chips — adapted from the curriculum badges on the reference site */
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:clamp(2.5rem,5vw,3.5rem);padding-top:1.9rem;border-top:1px solid rgba(255,255,255,.22)}
+.chip{text-decoration:none;font-size:.9rem;color:#CBDAD5;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:.38rem .95rem}
+.chip:hover{border-color:var(--brass);color:#fff}
+
+/* subject split, replacing the named roster */
+.streams{display:grid;gap:0;margin-top:2.4rem;border-top:1px solid rgba(255,255,255,.22)}
+@media(min-width:48rem){.streams{grid-template-columns:1fr 1fr}}
+.stream{padding:1.8rem 0 .4rem}
+@media(min-width:48rem){
+  .stream+.stream{border-left:1px solid rgba(255,255,255,.22);padding-left:2.6rem}
+  .stream:first-child{padding-right:2.6rem}
+}
+.stream h2{font-size:1.35rem;color:#fff}
+.stream p{color:#96AEA8;font-size:.92rem;margin:.5rem 0 0}
+.stream ul{list-style:none;margin:1rem 0 0;padding:0;columns:2;column-gap:1.4rem}
+.stream li{color:#CBDAD5;font-size:.95rem;padding:.22rem 0;break-inside:avoid}
+
+/* ---------- about ---------- */
+.about-lead{max-width:60ch;font-size:clamp(1.05rem,1rem + 0.3vw,1.2rem)}
+.pillars{display:grid;gap:2.2rem;margin-top:3rem}
+@media(min-width:52rem){.pillars{grid-template-columns:repeat(3,1fr);gap:2.6rem}}
+.pillar{border-top:2px solid var(--ink);padding-top:1.1rem}
+.pillar p{color:var(--muted);margin:.6rem 0 0;font-size:.97rem}
+
+/* ---------- what we do ---------- */
+.services{display:grid;gap:1.4rem;margin-top:2.6rem}
+@media(min-width:52rem){.services{grid-template-columns:repeat(3,1fr);gap:1.8rem}}
+.service{border:1px solid var(--line);background:var(--paper);padding:1.7rem 1.5rem}
+.service p{color:var(--muted);margin:.6rem 0 0;font-size:.96rem}
+
+/* ---------- steps ---------- */
+.steps{display:grid;gap:2.2rem;margin-top:2.6rem}
+@media(min-width:52rem){.steps{grid-template-columns:repeat(3,1fr);gap:2.8rem}}
+.step{border-top:2px solid var(--ink);padding-top:1.1rem}
+.step .n{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--brass-dark);line-height:1;display:block;margin-bottom:.5rem}
+.step p{color:var(--muted);margin:.45rem 0 0;font-size:.97rem}
+
+/* ---------- courses ---------- */
+.course-grid{display:grid;gap:2.4rem;margin-top:2.6rem}
+@media(min-width:52rem){.course-grid{grid-template-columns:repeat(3,1fr)}}
+.dept h3{padding-bottom:.7rem;border-bottom:2px solid var(--ink)}
+.dept ul{list-style:none;margin:.9rem 0 0;padding:0}
+.dept li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.97rem}
+.dept li .lvl{color:var(--muted);font-size:.86rem;white-space:nowrap}
+
+/* ---------- pricing ---------- */
+.from-rate{font-family:var(--serif);font-size:1.3rem;color:var(--ink);margin:1.8rem 0 2rem;display:flex;align-items:baseline;flex-wrap:wrap;gap:.5rem}
+.from-rate strong{font-size:2.8rem;font-weight:700;color:var(--brass-dark);line-height:1}
+
+.rate-wrap{overflow-x:auto;margin-bottom:2.8rem;border:1px solid var(--line)}
+.rate-wrap:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.rates{border-collapse:collapse;width:100%;min-width:36rem;font-size:.95rem}
+.rates th,.rates td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--line)}
+.rates thead th{background:var(--ink);color:#EAF2EF;font-family:var(--sans);font-weight:600;font-size:.86rem;border-bottom:0;white-space:nowrap}
+.rates tbody th{font-weight:600;white-space:nowrap}
+.rates tbody tr:nth-child(even){background:var(--surface)}
+.rates td{font-variant-numeric:tabular-nums}
+.rates tbody tr:last-child th,.rates tbody tr:last-child td{border-bottom:0}
+
+.rules{list-style:none;margin:1.1rem 0 0;padding:0;max-width:58rem}
+.rules li{padding:.75rem 0 .75rem 1.5rem;position:relative;border-top:1px solid var(--line);font-size:.97rem}
+.rules li::before{content:"";position:absolute;left:0;top:1.3rem;width:.5rem;height:.5rem;background:var(--brass)}
+.rules strong{display:block}
+.rules span{color:var(--muted)}
+
+.example{margin-top:3rem;border:2px solid var(--ink);padding:1.7rem 1.6rem;max-width:30rem}
+.example h3{margin-bottom:.25rem}
+.example .ctx{color:var(--muted);font-size:.92rem;margin:0 0 1.1rem}
+.example ul{list-style:none;margin:0;padding:0}
+.example li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.97rem;font-variant-numeric:tabular-nums}
+.example li:last-child{border-bottom:0;border-top:2px solid var(--ink);margin-top:.35rem;padding-top:.7rem;font-weight:700}
+
+.note{color:var(--muted);font-size:.9rem;margin-top:1.8rem}
+
+/* ---------- faq ---------- */
+.faq{margin-top:2rem;max-width:52rem}
+.faq details{border-bottom:1px solid var(--line);padding:1.15rem 0}
+.faq summary{font-family:var(--serif);font-size:1.1rem;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1.5rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--brass-dark);font-size:1.5rem;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:.9rem 0 0;color:var(--muted)}
+
+/* ---------- contact ---------- */
+.contact{background:var(--ink);color:#EAF2EF}
+.contact h2{color:#fff}
+.contact p{color:#B9CCC6}
+.form{display:grid;gap:1.1rem;max-width:34rem;margin-top:2rem}
+.field{display:grid;gap:.4rem}
+.field label{font-size:.92rem;color:#CBDAD5}
+.field input,.field select,.field textarea{font:inherit;font-family:var(--sans);background:rgba(255,255,255,.07);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:3px;padding:.72rem .85rem}
+.field textarea{min-height:7rem;resize:vertical}
+.field select option{color:#000}
+.form .btn{justify-self:start;margin-top:.4rem}
+.form-msg{font-size:.95rem;color:var(--brass);min-height:1.4rem}
+
+/* ---------- footer ---------- */
+.foot{background:var(--ink-deep);color:#8FA8A2;font-size:.9rem;padding-block:2.6rem}
+.foot a{color:#B9CCC6}
+.foot-grid{display:grid;gap:1.6rem}
+@media(min-width:48rem){.foot-grid{grid-template-columns:2fr 1fr 1fr}}
+.foot h3{font-size:.9rem;color:#CBDAD5;font-family:var(--sans);font-weight:600;margin-bottom:.6rem}
+.foot-brand{display:flex;align-items:center;gap:.6rem;margin-bottom:.7rem}
+.foot-brand .logo{height:2.5rem}
+.foot-brand h3{font-family:var(--serif);font-size:1.1rem;color:#EAF2EF;margin:0}
+.foot ul{list-style:none;margin:0;padding:0}
+.foot li{padding:.16rem 0}
+.foot .legal{margin-top:2rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.12);font-size:.84rem}
+
+@media(prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(12px);animation:rise .7s cubic-bezier(.2,.7,.3,1) forwards}
+  .reveal:nth-child(2){animation-delay:.08s}
+  .reveal:nth-child(3){animation-delay:.16s}
+  .reveal:nth-child(4){animation-delay:.24s}
+  .reveal:nth-child(5){animation-delay:.32s}
+  @keyframes rise{to{opacity:1;transform:none}}
+}
+
+[hidden]{display:none !important}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main" data-en="Skip to content" data-zh="跳至主要内容" data-tw="跳至主要內容">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <svg class="logo" viewBox="0 0 72 58" aria-hidden="true" focusable="false">
+        <g class="logo-sun">
+          <path id="sl-ray" d="M36 3.2c1.4 0 2.5 1.15 2.5 2.55 0 1.85-2.5 5.05-2.5 5.05s-2.5-3.2-2.5-5.05C33.5 4.35 34.6 3.2 36 3.2z"/>
+          <use href="#sl-ray" transform="rotate(-78 36 28)"/>
+          <use href="#sl-ray" transform="rotate(-52 36 28)"/>
+          <use href="#sl-ray" transform="rotate(-26 36 28)"/>
+          <use href="#sl-ray" transform="rotate(26 36 28)"/>
+          <use href="#sl-ray" transform="rotate(52 36 28)"/>
+          <use href="#sl-ray" transform="rotate(78 36 28)"/>
+          <circle cx="36" cy="28" r="14"/>
+        </g>
+        <g class="logo-dial"><path d="M36 29V18.6"/><path d="M36 29l8.4-8.4"/></g>
+        <g class="logo-nib">
+          <path d="M36 15.4l2.3 4.2h-4.6z"/>
+          <path d="M45.2 18.1l2.4 2.4-2.9 1.4-.9-.9z"/>
+          <circle cx="36" cy="29" r="2.7"/>
+        </g>
+        <g class="logo-book">
+          <path d="M36 39.4c-6.4-4.6-16.6-6.6-27.6-5.6v12.4c11-1 21.2 1 27.6 5.6z"/>
+          <path d="M36 39.4c6.4-4.6 16.6-6.6 27.6-5.6v12.4c-11-1-21.2 1-27.6 5.6z"/>
+        </g>
+        <path class="logo-cover" d="M6.2 45.2v4.3c11.4-.9 22 1.1 29.8 5.8 7.8-4.7 18.4-6.7 29.8-5.8v-4.3c-11.4-.9-22 1-29.8 5.5-7.8-4.5-18.4-6.4-29.8-5.5z"/>
+      </svg>
+      <span>Solstice <em>Learning</em></span>
+    </a>
+
+    <nav class="tabs" id="tabs" aria-label="Sections">
+      <a href="#about" data-en="About us" data-zh="关于我们" data-tw="關於我們">About us</a>
+      <a href="#courses" data-en="Courses" data-zh="科目" data-tw="科目">Courses</a>
+      <a href="#how" data-en="How it works" data-zh="上课流程" data-tw="上課流程">How it works</a>
+      <a href="#pricing" data-en="Pricing" data-zh="收费" data-tw="收費">Pricing</a>
+      <a href="#faq" data-en="Questions" data-zh="常见问题" data-tw="常見問題">Questions</a>
+    </nav>
+
+    <div class="nav-end">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" id="btn-en" aria-pressed="true">EN</button>
+        <button type="button" id="btn-zh" aria-pressed="false"><span class="lg-full">简体</span><span class="lg-short">简</span></button>
+        <button type="button" id="btn-tw" aria-pressed="false"><span class="lg-full">繁體</span><span class="lg-short">繁</span></button>
+      </div>
+
+      <a class="btn btn-solid" href="#contact" data-en="Book a consult" data-zh="预约咨询" data-tw="預約諮詢">Book a consult</a>
+
+      <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Menu">
+        <svg width="18" height="14" viewBox="0 0 18 14" aria-hidden="true" focusable="false">
+          <path d="M0 1h18M0 7h18M0 13h18" stroke="currentColor" stroke-width="2" fill="none"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="Sections" hidden>
+    <div class="wrap">
+      <ul>
+        <li><a href="#about" data-en="About us" data-zh="关于我们" data-tw="關於我們">About us</a></li>
+        <li><a href="#courses" data-en="Courses" data-zh="科目" data-tw="科目">Courses</a></li>
+        <li><a href="#how" data-en="How it works" data-zh="上课流程" data-tw="上課流程">How it works</a></li>
+        <li><a href="#pricing" data-en="Pricing" data-zh="收费" data-tw="收費">Pricing</a></li>
+        <li><a href="#faq" data-en="Questions" data-zh="常见问题" data-tw="常見問題">Questions</a></li>
+        <li><a href="#contact" data-en="Book a free consult" data-zh="预约免费咨询" data-tw="預約免費諮詢">Book a free consult</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <h1 class="reveal" data-en="Grade 9–12 tutoring, taught to the BC curriculum." data-zh="9至12年级补习，完全依照BC省课程大纲。" data-tw="9至12年級補習，完全依照BC省課程大綱。">Grade 9–12 tutoring, taught to the BC curriculum.</h1>
+
+    <p class="lede reveal" data-en="Sciences and mathematics first, humanities alongside. Every session follows the course your child is actually enrolled in — the same unit, the same assignments, the same exam." data-zh="以理科与数学为重心，人文学科同步并行。每一节课都紧扣孩子在校修读的课程——相同的单元、相同的作业、相同的考试。" data-tw="以理科與數學爲重心，人文學科同步並行。每一節課都緊扣孩子在校修讀的課程——相同的單元、相同的作業、相同的考試。">Sciences and mathematics first, humanities alongside. Every session follows the course your child is actually enrolled in — the same unit, the same assignments, the same exam.</p>
+
+    <div class="hero-cta reveal">
+      <a class="btn btn-solid" href="#contact" data-en="Book a free consult" data-zh="预约免费咨询" data-tw="預約免費諮詢">Book a free consult</a>
+      <a class="btn btn-ghost" href="#pricing" data-en="See pricing" data-zh="查看收费" data-tw="查看收費">See pricing</a>
+    </div>
+
+    <div class="chips reveal">
+      <a class="chip" href="#courses" data-en="Biology 12" data-zh="生物 12" data-tw="生物 12">Biology 12</a>
+      <a class="chip" href="#courses" data-en="Chemistry 12" data-zh="化学 12" data-tw="化學 12">Chemistry 12</a>
+      <a class="chip" href="#courses" data-en="Pre-Calculus 12" data-zh="预备微积分 12" data-tw="預備微積分 12">Pre-Calculus 12</a>
+      <a class="chip" href="#courses" data-en="Calculus 12" data-zh="微积分 12" data-tw="微積分 12">Calculus 12</a>
+      <a class="chip" href="#courses" data-en="ELL support" data-zh="英语语言学习" data-tw="英語語言學習">ELL support</a>
+      <a class="chip" href="#courses" data-en="Economics 12" data-zh="经济学 12" data-tw="經濟學 12">Economics 12</a>
+    </div>
+
+    <div class="streams reveal">
+      <div class="stream">
+        <h2 data-en="Science &amp; Mathematics" data-zh="理科与数学" data-tw="理科與數學">Science &amp; Mathematics</h2>
+        <p data-en="Our main focus. Concept-first teaching, then past-paper practice under time." data-zh="我们的核心科目。先建立概念，再进行限时历年试题训练。" data-tw="我們的核心科目。先建立概念，再進行限時歷年試題訓練。">Our main focus. Concept-first teaching, then past-paper practice under time.</p>
+        <ul>
+          <li data-en="Biology 11 &amp; 12" data-zh="生物 11 / 12" data-tw="生物 11 / 12">Biology 11 &amp; 12</li>
+          <li data-en="Chemistry 11 &amp; 12" data-zh="化学 11 / 12" data-tw="化學 11 / 12">Chemistry 11 &amp; 12</li>
+          <li data-en="Pre-Calculus 11 &amp; 12" data-zh="预备微积分 11 / 12" data-tw="預備微積分 11 / 12">Pre-Calculus 11 &amp; 12</li>
+          <li data-en="Calculus 12" data-zh="微积分 12" data-tw="微積分 12">Calculus 12</li>
+          <li data-en="Science 10" data-zh="科学 10" data-tw="科學 10">Science 10</li>
+        </ul>
+      </div>
+      <div class="stream">
+        <h2 data-en="Humanities &amp; Language Support" data-zh="人文学科与英语支持" data-tw="人文學科與英語支持">Humanities &amp; Language Support</h2>
+        <p data-en="Essay structure, argument, and the academic English the rest of the timetable depends on." data-zh="着重文章结构、论证方法，以及支撑其他所有科目的学术英语能力。" data-tw="着重文章結構、論證方法，以及支撐其他所有科目的學術英語能力。">Essay structure, argument, and the academic English the rest of the timetable depends on.</p>
+        <ul>
+          <li data-en="English Language Learning (ELL)" data-zh="英语语言学习（ELL）" data-tw="英語語言學習（ELL）">English Language Learning (ELL)</li>
+          <li data-en="Social Studies 10–11" data-zh="社会学 10–11" data-tw="社會學 10–11">Social Studies 10–11</li>
+          <li data-en="Economics 12" data-zh="经济学 12" data-tw="經濟學 12">Economics 12</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT US ============ -->
+<section id="about">
+  <div class="wrap">
+    <h2 data-en="About us" data-zh="关于我们" data-tw="關於我們">About us</h2>
+    <p class="about-lead" data-en="Solstice Learning is a small online tutoring practice in Richmond, British Columbia. We work with Grade 9 to 12 students on the BC provincial curriculum — not a generic international syllabus, and not worksheet packets bought off a shelf." data-zh="Solstice Learning 是一间位于卑诗省列治文市的小型线上补习机构。我们专注辅导9至12年级学生修读BC省课程大纲——并非泛用的国际课程，也不是现成购入的练习册。" data-tw="Solstice Learning 是一間位於卑詩省列治文市的小型線上補習機構。我們專注輔導9至12年級學生修讀BC省課程大綱——並非泛用的國際課程，也不是現成購入的練習冊。">Solstice Learning is a small online tutoring practice in Richmond, British Columbia. We work with Grade 9 to 12 students on the BC provincial curriculum — not a generic international syllabus, and not worksheet packets bought off a shelf.</p>
+    <p class="about-lead" data-en="Teaching here is done by tutors with classroom experience in BC secondary schools and subject training at the university level. We keep the roster small on purpose: every student holds a fixed weekly slot with the same tutor for the whole term." data-zh="我们的老师具备BC省中学课堂教学经验，并接受过大学程度的专科训练。我们刻意控制学生人数：每位学生在整个学期内，都固定由同一位老师于固定时段授课。" data-tw="我們的老師具備BC省中學課堂教學經驗，並接受過大學程度的專科訓練。我們刻意控制學生人數：每位學生在整個學期內，都固定由同一位老師於固定時段授課。">Teaching here is done by tutors with classroom experience in BC secondary schools and subject training at the university level. We keep the roster small on purpose: every student holds a fixed weekly slot with the same tutor for the whole term.</p>
+
+    <p class="about-lead" data-en="Our teaching includes a TEFL-certified tutor with classroom experience taking ELL students through STEM subjects. Science and mathematics carry vocabulary of their own — lab reports, word problems, the exact wording of an exam question — and that is often where a capable student who is still building English loses marks that have nothing to do with the science. For families arriving into the Canadian high school system partway through, this is usually the support that decides how smooth the transition is." data-zh="我们的师资包括一位持有 TEFL 证书的老师，具备带领 ELL 学生修读理科科目的课堂经验。科学与数学有其独特的专业词汇——实验报告、应用题、考题的精确措辞——而这往往正是英语仍在提升阶段的优秀学生失分之处，与学科能力并无关系。对于中途进入加拿大中学体系的家庭而言，这通常正是决定过渡是否顺利的关键支持。" data-tw="我們的師資包括一位持有 TEFL 證書的老師，具備帶領 ELL 學生修讀理科科目的課堂經驗。科學與數學有其獨特的專業詞彙——實驗報告、應用題、考題的精確措辭——而這往往正是英語仍在提升階段的優秀學生失分之處，與學科能力並無關係。對於中途進入加拿大中學體系的家庭而言，這通常正是決定過渡是否順利的關鍵支持。">Our teaching includes a TEFL-certified tutor with classroom experience taking ELL students through STEM subjects. Science and mathematics carry vocabulary of their own — lab reports, word problems, the exact wording of an exam question — and that is often where a capable student who is still building English loses marks that have nothing to do with the science. For families arriving into the Canadian high school system partway through, this is usually the support that decides how smooth the transition is.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <h3 data-en="Built around the BC curriculum" data-zh="紧扣BC省课程大纲" data-tw="緊扣BC省課程大綱">Built around the BC curriculum</h3>
+        <p data-en="We teach named BC courses to the provincial learning standards. Sessions track your child's actual class — the unit they are on, the assignment due Friday, the exam in three weeks." data-zh="我们依照省级学习标准教授BC省的指定课程。课堂内容紧随孩子的实际进度——正在学习的单元、周五要交的作业、三周后的考试。" data-tw="我們依照省級學習標準教授BC省的指定課程。課堂內容緊隨孩子的實際進度——正在學習的單元、週五要交的作業、三週後的考試。">We teach named BC courses to the provincial learning standards. Sessions track your child's actual class — the unit they are on, the assignment due Friday, the exam in three weeks.</p>
+      </div>
+      <div class="pillar">
+        <h3 data-en="Small by design" data-zh="小班规模，刻意为之" data-tw="小班規模，刻意爲之">Small by design</h3>
+        <p data-en="We cap how many students we take each term. That is what makes a fixed weekly time, the same tutor every week, and a real answer within a school day possible." data-zh="我们限制每学期收生人数。唯有如此，才能确保固定的上课时间、每周同一位老师，以及在一个上课日内得到实质回复。" data-tw="我們限制每學期收生人數。唯有如此，才能確保固定的上課時間、每週同一位老師，以及在一個上課日內得到實質回覆。">We cap how many students we take each term. That is what makes a fixed weekly time, the same tutor every week, and a real answer within a school day possible.</p>
+      </div>
+      <div class="pillar">
+        <h3 data-en="Progress you can read" data-zh="看得见的学习进度" data-tw="看得見的學習進度">Progress you can read</h3>
+        <p data-en="After every session you get a short written note on what was covered and what still needs work. No guessing whether the money is doing anything." data-zh="每节课后，您都会收到简短的书面记录，说明已涵盖的内容与仍需加强之处，让您清楚看见每一分投入的成效。" data-tw="每節課後，您都會收到簡短的書面記錄，說明已涵蓋的內容與仍需加強之處，讓您清楚看見每一分投入的成效。">After every session you get a short written note on what was covered and what still needs work. No guessing whether the money is doing anything.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT WE DO ============ -->
+<section class="tint">
+  <div class="wrap">
+    <h2 data-en="What we do" data-zh="服务内容" data-tw="服務內容">What we do</h2>
+    <div class="services">
+      <div class="service">
+        <h3 data-en="Weekly tutoring" data-zh="每周定期辅导" data-tw="每週定期輔導">Weekly tutoring</h3>
+        <p data-en="One-on-one sessions at a fixed time, running alongside the school term. The core of what we offer." data-zh="于固定时段进行一对一授课，与学校学期同步进行。这是我们的核心服务。" data-tw="於固定時段進行一對一授課，與學校學期同步進行。這是我們的核心服務。">One-on-one sessions at a fixed time, running alongside the school term. The core of what we offer.</p>
+      </div>
+      <div class="service">
+        <h3 data-en="Exam preparation" data-zh="考前强化" data-tw="考前強化">Exam preparation</h3>
+        <p data-en="Short intensive blocks before midterms, finals, and provincial assessments. Past papers under time, marked and walked through." data-zh="于期中考、期末考及省级评估前进行短期密集训练。限时完成历年试题，并逐题批改讲解。" data-tw="於期中考、期末考及省級評估前進行短期密集訓練。限時完成歷年試題，並逐題批改講解。">Short intensive blocks before midterms, finals, and provincial assessments. Past papers under time, marked and walked through.</p>
+      </div>
+      <div class="service">
+        <h3 data-en="Course planning" data-zh="选科规划" data-tw="選科規劃">Course planning</h3>
+        <p data-en="Which Grade 11 and 12 courses to take for the university programs your child is aiming at, and which prerequisites are easy to miss." data-zh="针对孩子目标大学专业，规划11及12年级应修读的科目，并指出容易遗漏的先修要求。" data-tw="針對孩子目標大學專業，規劃11及12年級應修讀的科目，並指出容易遺漏的先修要求。">Which Grade 11 and 12 courses to take for the university programs your child is aiming at, and which prerequisites are easy to miss.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COURSES ============ -->
+<section id="courses">
+  <div class="wrap">
+    <h2 data-en="Courses we cover" data-zh="授课科目" data-tw="授課科目">Courses we cover</h2>
+    <p data-en="Named BC courses, not vague subject areas. If a course is not on this list, we will say so rather than take it on." data-zh="明确列出BC省课程名称，而非笼统的学科范围。若某科目不在此列表内，我们会如实告知，而不会勉强接下。" data-tw="明確列出BC省課程名稱，而非籠統的學科範圍。若某科目不在此列表內，我們會如實告知，而不會勉強接下。">Named BC courses, not vague subject areas. If a course is not on this list, we will say so rather than take it on.</p>
+
+    <div class="course-grid">
+      <div class="dept">
+        <h3 data-en="Sciences" data-zh="理科" data-tw="理科">Sciences</h3>
+        <ul>
+          <li><span data-en="Science 10" data-zh="科学 10" data-tw="科學 10">Science 10</span><span class="lvl" data-en="Grade 10" data-zh="10年级" data-tw="10年級">Grade 10</span></li>
+          <li><span data-en="Biology 11" data-zh="生物 11" data-tw="生物 11">Biology 11</span><span class="lvl" data-en="Grade 11" data-zh="11年级" data-tw="11年級">Grade 11</span></li>
+          <li><span data-en="Biology 12" data-zh="生物 12" data-tw="生物 12">Biology 12</span><span class="lvl" data-en="Grade 12" data-zh="12年级" data-tw="12年級">Grade 12</span></li>
+          <li><span data-en="Chemistry 11" data-zh="化学 11" data-tw="化學 11">Chemistry 11</span><span class="lvl" data-en="Grade 11" data-zh="11年级" data-tw="11年級">Grade 11</span></li>
+          <li><span data-en="Chemistry 12" data-zh="化学 12" data-tw="化學 12">Chemistry 12</span><span class="lvl" data-en="Grade 12" data-zh="12年级" data-tw="12年級">Grade 12</span></li>
+        </ul>
+      </div>
+      <div class="dept">
+        <h3 data-en="Mathematics" data-zh="数学" data-tw="數學">Mathematics</h3>
+        <ul>
+          <li><span data-en="Pre-Calculus 11" data-zh="预备微积分 11" data-tw="預備微積分 11">Pre-Calculus 11</span><span class="lvl" data-en="Grade 11" data-zh="11年级" data-tw="11年級">Grade 11</span></li>
+          <li><span data-en="Pre-Calculus 12" data-zh="预备微积分 12" data-tw="預備微積分 12">Pre-Calculus 12</span><span class="lvl" data-en="Grade 12" data-zh="12年级" data-tw="12年級">Grade 12</span></li>
+          <li><span data-en="Calculus 12" data-zh="微积分 12" data-tw="微積分 12">Calculus 12</span><span class="lvl" data-en="Grade 12" data-zh="12年级" data-tw="12年級">Grade 12</span></li>
+        </ul>
+      </div>
+      <div class="dept">
+        <h3 data-en="Humanities &amp; ELL" data-zh="人文学科与英语" data-tw="人文學科與英語">Humanities &amp; ELL</h3>
+        <ul>
+          <li><span data-en="English Language Learning (ELL)" data-zh="英语语言学习（ELL）" data-tw="英語語言學習（ELL）">English Language Learning (ELL)</span><span class="lvl" data-en="Grades 9–12" data-zh="9–12年级" data-tw="9–12年級">Grades 9–12</span></li>
+          <li><span data-en="Social Studies 10–11" data-zh="社会学 10–11" data-tw="社會學 10–11">Social Studies 10–11</span><span class="lvl" data-en="Grades 10–11" data-zh="10–11年级" data-tw="10–11年級">Grades 10–11</span></li>
+          <li><span data-en="Economics 12" data-zh="经济学 12" data-tw="經濟學 12">Economics 12</span><span class="lvl" data-en="Grade 12" data-zh="12年级" data-tw="12年級">Grade 12</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="tint" id="how">
+  <div class="wrap">
+    <h2 data-en="How it works" data-zh="上课流程" data-tw="上課流程">How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <h3 data-en="Free consult" data-zh="免费咨询" data-tw="免費諮詢">Free consult</h3>
+        <p data-en="A 20-minute call to go through the course, recent marks, and where things are going wrong. No charge, no commitment." data-zh="20分钟通话，了解课程内容、近期成绩以及学习上的困难所在。免费，无需承诺。" data-tw="20分鐘通話，瞭解課程內容、近期成績以及學習上的困難所在。免費，無需承諾。">A 20-minute call to go through the course, recent marks, and where things are going wrong. No charge, no commitment.</p>
+      </div>
+      <div class="step">
+        <span class="n">2</span>
+        <h3 data-en="Weekly sessions" data-zh="每周课程" data-tw="每週課程">Weekly sessions</h3>
+        <p data-en="One-on-one online, at a fixed weekly time you choose. Sessions follow your child's actual class, assignments, and upcoming tests." data-zh="线上一对一授课，时间由您选定并固定每周进行。课程内容紧扣孩子在校的进度、作业与即将到来的考试。" data-tw="線上一對一授課，時間由您選定並固定每週進行。課程內容緊扣孩子在校的進度、作業與即將到來的考試。">One-on-one online, at a fixed weekly time you choose. Sessions follow your child's actual class, assignments, and upcoming tests.</p>
+      </div>
+      <div class="step">
+        <span class="n">3</span>
+        <h3 data-en="Written progress" data-zh="书面进度报告" data-tw="書面進度報告">Written progress</h3>
+        <p data-en="You get a written note on what was covered and what still needs work — so you are not guessing whether the tutoring is doing anything." data-zh="您会收到书面记录，说明已完成的内容与仍需加强之处，让您清楚看见补习的实际成效。" data-tw="您會收到書面記錄，說明已完成的內容與仍需加強之處，讓您清楚看見補習的實際成效。">You get a written note on what was covered and what still needs work — so you are not guessing whether the tutoring is doing anything.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section id="pricing">
+  <div class="wrap">
+    <h2 data-en="Pricing" data-zh="收费" data-tw="收費">Pricing</h2>
+    <p data-en="Grades 9 to 12. Every rate below is per student, per online session, for one subject." data-zh="九至十二年级 · 所有价钱均为每位学生每堂网课收费 · 单科收费" data-tw="九至十二年級 · 所有價錢均爲每位學生每堂網課收費 · 單科收費">Grades 9 to 12. Every rate below is per student, per online session, for one subject.</p>
+
+    <p class="from-rate">
+      <span data-en="Semester plans from" data-zh="学期计划低至" data-tw="學期計劃低至">Semester plans from</span>
+      <strong>$35</strong>
+      <span data-en="per session" data-zh="每堂" data-tw="每堂">per session</span>
+    </p>
+
+    <div class="rate-wrap" tabindex="0" role="region" aria-label="Session rates">
+      <table class="rates">
+        <thead>
+          <tr>
+            <th scope="col" data-en="Grade" data-zh="年级" data-tw="年級">Grade</th>
+            <th scope="col" data-en="Semester · 1:1" data-zh="学期计划 · 一对一" data-tw="學期計劃 · 一對一">Semester · 1:1</th>
+            <th scope="col" data-en="Semester · Group" data-zh="学期计划 · 小组" data-tw="學期計劃 · 小組">Semester · Group</th>
+            <th scope="col" data-en="Monthly · 1:1" data-zh="月费计划 · 一对一" data-tw="月費計劃 · 一對一">Monthly · 1:1</th>
+            <th scope="col" data-en="Monthly · Group" data-zh="月费计划 · 小组" data-tw="月費計劃 · 小組">Monthly · Group</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row" data-en="Grade 9" data-zh="九年级" data-tw="九年級">Grade 9</th><td>$45</td><td>$35</td><td>$50</td><td>$40</td></tr>
+          <tr><th scope="row" data-en="Grade 10" data-zh="十年级" data-tw="十年級">Grade 10</th><td>$45</td><td>$35</td><td>$50</td><td>$40</td></tr>
+          <tr><th scope="row" data-en="Grade 11" data-zh="十一年级" data-tw="十一年級">Grade 11</th><td>$50</td><td>$40</td><td>$55</td><td>$45</td></tr>
+          <tr><th scope="row" data-en="Grade 12" data-zh="十二年级" data-tw="十二年級">Grade 12</th><td>$60</td><td>$50</td><td>$65</td><td>$55</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 data-en="How pricing works" data-zh="收费计算方式" data-tw="收費計算方式">How pricing works</h3>
+    <ul class="rules">
+        <li><strong data-en="Semester Plan" data-zh="学期计划" data-tw="學期計劃">Semester Plan</strong><span data-en="Commit for the full semester and receive the rates shown." data-zh="报读整个学期，即可享用表列的标准收费。" data-tw="報讀整個學期，即可享用表列的標準收費。">Commit for the full semester and receive the rates shown.</span></li>
+        <li><strong data-en="Monthly Plan" data-zh="月费计划" data-tw="月費計劃">Monthly Plan</strong><span data-en="Add $5 per session for additional flexibility." data-zh="每堂加 $5，可享有较灵活的月费安排。" data-tw="每堂加 $5，可享有較靈活的月費安排。">Add $5 per session for additional flexibility.</span></li>
+        <li><strong data-en="Group Sessions" data-zh="小组课堂" data-tw="小組課堂">Group Sessions</strong><span data-en="$10 less per student than the corresponding 1:1 session." data-zh="每位学生每堂较相同计划的一对一课堂便宜 $10。" data-tw="每位學生每堂較相同計劃的一對一課堂便宜 $10。">$10 less per student than the corresponding 1:1 session.</span></li>
+        <li><strong data-en="Multi-Subject Bundle" data-zh="多科组合优惠" data-tw="多科組合優惠">Multi-Subject Bundle</strong><span data-en="Enrol in 3 or more subjects and receive $5 off each session." data-zh="同时报读三科或以上，每堂可减 $5。" data-tw="同時報讀三科或以上，每堂可減 $5。">Enrol in 3 or more subjects and receive $5 off each session.</span></li>
+        <li><strong data-en="Referral Rewards" data-zh="推荐奖赏" data-tw="推薦獎賞">Referral Rewards</strong><span data-en="Refer 1 new client and receive a $15 coupon. Refer 3 or more and receive one free session." data-zh="成功推荐 1 位新客户可获 $15 优惠券；成功推荐 3 位或以上可获免费课堂一节。" data-tw="成功推薦 1 位新客戶可獲 $15 優惠券；成功推薦 3 位或以上可獲免費課堂一節。">Refer 1 new client and receive a $15 coupon. Refer 3 or more and receive one free session.</span></li>
+    </ul>
+
+    <div class="example">
+      <h3 data-en="Pricing example" data-zh="收费例子" data-tw="收費例子">Pricing example</h3>
+      <p class="ctx" data-en="Grade 11 · Semester plan · Group · 3-subject bundle" data-zh="十一年级 · 学期计划 · 小组课堂 · 三科组合" data-tw="十一年級 · 學期計劃 · 小組課堂 · 三科組合">Grade 11 · Semester plan · Group · 3-subject bundle</p>
+      <ul>
+          <li><span data-en="Grade 11 semester 1:1" data-zh="十一年级学期一对一" data-tw="十一年級學期一對一">Grade 11 semester 1:1</span><span>$50</span></li>
+          <li><span data-en="Group discount" data-zh="小组优惠" data-tw="小組優惠">Group discount</span><span>−$10</span></li>
+          <li><span data-en="3+ subject bundle" data-zh="三科或以上优惠" data-tw="三科或以上優惠">3+ subject bundle</span><span>−$5</span></li>
+          <li><span data-en="Final rate per session" data-zh="每堂最终收费" data-tw="每堂最終收費">Final rate per session</span><span>$35</span></li>
+      </ul>
+    </div>
+
+    <p class="note" data-en="Group placement depends on student compatibility and availability. Semester plans are refunded in full within the first 7 days, and pro-rated up to the middle of the term. Payment by credit card, Visa Debit, or WeChat Pay." data-zh="小组配对视乎学生程度、学习需要及名额而定。学期计划于首7天内可全额退款，学期中段之前按比例退款。接受信用卡、Visa Debit 及微信支付。" data-tw="小組配對視乎學生程度、學習需要及名額而定。學期計劃於首7天內可全額退款，學期中段之前按比例退款。接受信用卡、Visa Debit 及微信支付。">Group placement depends on student compatibility and availability. Semester plans are refunded in full within the first 7 days, and pro-rated up to the middle of the term. Payment by credit card, Visa Debit, or WeChat Pay.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="tint" id="faq">
+  <div class="wrap">
+    <h2 data-en="Questions parents ask" data-zh="家长常见问题" data-tw="家長常見問題">Questions parents ask</h2>
+    <div class="faq">
+      <details>
+        <summary data-en="Are sessions online or in person?" data-zh="课程是线上还是面授？" data-tw="課程是線上還是面授？">Are sessions online or in person?</summary>
+        <p data-en="Online, one-on-one, over video. That is how we keep a fixed weekly time that works around sports, part-time jobs, and family schedules." data-zh="线上视频一对一授课。如此方能固定每周时段，灵活配合运动训练、兼职与家庭安排。" data-tw="線上影片一對一授課。如此方能固定每週時段，靈活配合運動訓練、兼職與家庭安排。">Online, one-on-one, over video. That is how we keep a fixed weekly time that works around sports, part-time jobs, and family schedules.</p>
+      </details>
+      <details>
+        <summary data-en="Can we speak Chinese with you?" data-zh="可以用中文沟通吗？" data-tw="可以用中文溝通嗎？">Can we speak Chinese with you?</summary>
+        <p data-en="Yes. Consults, progress reports, and billing questions can all be handled in Mandarin or English. Sessions themselves are taught in English, since that is the language of the provincial exams." data-zh="可以。咨询、进度报告及账务问题均可使用普通话或英文沟通。课堂本身以英文授课，因为省考同样以英文进行。" data-tw="可以。諮詢、進度報告及賬務問題均可使用普通話或英文溝通。課堂本身以英文授課，因爲省考同樣以英文進行。">Yes. Consults, progress reports, and billing questions can all be handled in Mandarin or English. Sessions themselves are taught in English, since that is the language of the provincial exams.</p>
+      </details>
+      <details>
+        <summary data-en="Do you teach the sciences and maths in depth?" data-zh="理科与数学的教学是否深入？" data-tw="理科與數學的教學是否深入？">Do you teach the sciences and maths in depth?</summary>
+        <p data-en="Those are our main focus. Biology, Chemistry, Pre-Calculus and Calculus make up most of what we teach, and sessions run concept-first before moving to timed past-paper practice." data-zh="这正是我们的重心所在。生物、化学、预备微积分与微积分占我们教学的大部分，课程先建立概念，再进入限时历年试题训练。" data-tw="這正是我們的重心所在。生物、化學、預備微積分與微積分佔我們教學的大部分，課程先建立概念，再進入限時歷年試題訓練。">Those are our main focus. Biology, Chemistry, Pre-Calculus and Calculus make up most of what we teach, and sessions run concept-first before moving to timed past-paper practice.</p>
+      </details>
+      <details>
+        <summary data-en="What does ELL support involve?" data-zh="英语语言学习（ELL）包含哪些内容？" data-tw="英語語言學習（ELL）包含哪些內容？">What does ELL support involve?</summary>
+        <p data-en="Academic English for students still building fluency — the reading, note-taking, and written work their other courses assume. It runs alongside the subject timetable rather than replacing it." data-zh="为英语能力仍在提升中的学生提供学术英语辅导——包括阅读、笔记与书面作业，这些都是其他科目默认学生已掌握的能力。该课程与学科课表并行，而非取代。" data-tw="爲英語能力仍在提升中的學生提供學術英語輔導——包括閱讀、筆記與書面作業，這些都是其他科目默認學生已掌握的能力。該課程與學科課表並行，而非取代。">Academic English for students still building fluency — the reading, note-taking, and written work their other courses assume. It runs alongside the subject timetable rather than replacing it.</p>
+      </details>
+      <details>
+        <summary data-en="What if we need to miss a week?" data-zh="如果某周需要请假怎么办？" data-tw="如果某周需要請假怎麼辦？">What if we need to miss a week?</summary>
+        <p data-en="Give us 24 hours' notice and the session is rescheduled at no cost. Semester plans include two makeup sessions on top of that." data-zh="提前24小时通知即可免费改期。学期方案另外包含两节补课。" data-tw="提前24小時通知即可免費改期。學期方案另外包含兩節補課。">Give us 24 hours' notice and the session is rescheduled at no cost. Semester plans include two makeup sessions on top of that.</p>
+      </details>
+      <details>
+        <summary data-en="Do you cover the course my child is actually in?" data-zh="你们是否涵盖我孩子正在修读的课程？" data-tw="你們是否涵蓋我孩子正在修讀的課程？">Do you cover the course my child is actually in?</summary>
+        <p data-en="Check the course list above. If it is not there, we will tell you rather than take the booking — and where we can, we will point you to someone who does cover it." data-zh="请参阅上方科目列表。若未列出，我们会如实告知而不接受预约，并会尽可能为您推荐合适的老师。" data-tw="請參閱上方科目列表。若未列出，我們會如實告知而不接受預約，並會儘可能爲您推薦合適的老師。">Check the course list above. If it is not there, we will tell you rather than take the booking — and where we can, we will point you to someone who does cover it.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2 data-en="Book a free consult" data-zh="预约免费咨询" data-tw="預約免費諮詢">Book a free consult</h2>
+    <p data-en="Tell us the course and what is going wrong. We will reply within one school day." data-zh="请告知科目及目前遇到的困难，我们会在一个上课日内回复。" data-tw="請告知科目及目前遇到的困難，我們會在一個上課日內回覆。">Tell us the course and what is going wrong. We will reply within one school day.</p>
+
+    <form class="form" id="inquiry" novalidate>
+      <div class="field">
+        <label for="f-name" data-en="Parent or student name" data-zh="家长或学生姓名" data-tw="家長或學生姓名">Parent or student name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="f-email" data-en="Email" data-zh="电子邮箱" data-tw="電郵地址">Email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="f-course" data-en="Course" data-zh="科目" data-tw="科目">Course</label>
+        <select id="f-course" name="course">
+          <option value="" data-en="Select a course" data-zh="请选择科目" data-tw="請選擇科目">Select a course</option>
+          <option value="sci10" data-en="Science 10" data-zh="科学 10" data-tw="科學 10">Science 10</option>
+          <option value="bio11" data-en="Biology 11" data-zh="生物 11" data-tw="生物 11">Biology 11</option>
+          <option value="bio12" data-en="Biology 12" data-zh="生物 12" data-tw="生物 12">Biology 12</option>
+          <option value="chem11" data-en="Chemistry 11" data-zh="化学 11" data-tw="化學 11">Chemistry 11</option>
+          <option value="chem12" data-en="Chemistry 12" data-zh="化学 12" data-tw="化學 12">Chemistry 12</option>
+          <option value="precalc11" data-en="Pre-Calculus 11" data-zh="预备微积分 11" data-tw="預備微積分 11">Pre-Calculus 11</option>
+          <option value="precalc12" data-en="Pre-Calculus 12" data-zh="预备微积分 12" data-tw="預備微積分 12">Pre-Calculus 12</option>
+          <option value="calc12" data-en="Calculus 12" data-zh="微积分 12" data-tw="微積分 12">Calculus 12</option>
+          <option value="ell" data-en="English Language Learning (ELL)" data-zh="英语语言学习（ELL）" data-tw="英語語言學習（ELL）">English Language Learning (ELL)</option>
+          <option value="ss" data-en="Social Studies 10–11" data-zh="社会学 10–11" data-tw="社會學 10–11">Social Studies 10–11</option>
+          <option value="econ12" data-en="Economics 12" data-zh="经济学 12" data-tw="經濟學 12">Economics 12</option>
+          <option value="other" data-en="Something else" data-zh="其他" data-tw="其他">Something else</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-msg" data-en="What would you like help with?" data-zh="希望我们在哪方面提供帮助？" data-tw="希望我們在哪方面提供幫助？">What would you like help with?</label>
+        <textarea id="f-msg" name="message"></textarea>
+      </div>
+      <button class="btn btn-solid" type="submit" data-en="Send enquiry" data-zh="发送咨询" data-tw="發送諮詢">Send enquiry</button>
+      <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+  <svg class="logo" viewBox="0 0 72 58" aria-hidden="true" focusable="false">
+        <g class="logo-sun">
+          <path id="sl-ray-f" d="M36 3.2c1.4 0 2.5 1.15 2.5 2.55 0 1.85-2.5 5.05-2.5 5.05s-2.5-3.2-2.5-5.05C33.5 4.35 34.6 3.2 36 3.2z"/>
+          <use href="#sl-ray-f" transform="rotate(-78 36 28)"/>
+          <use href="#sl-ray-f" transform="rotate(-52 36 28)"/>
+          <use href="#sl-ray-f" transform="rotate(-26 36 28)"/>
+          <use href="#sl-ray-f" transform="rotate(26 36 28)"/>
+          <use href="#sl-ray-f" transform="rotate(52 36 28)"/>
+          <use href="#sl-ray-f" transform="rotate(78 36 28)"/>
+          <circle cx="36" cy="28" r="14"/>
+        </g>
+        <g class="logo-dial"><path d="M36 29V18.6"/><path d="M36 29l8.4-8.4"/></g>
+        <g class="logo-nib">
+          <path d="M36 15.4l2.3 4.2h-4.6z"/>
+          <path d="M45.2 18.1l2.4 2.4-2.9 1.4-.9-.9z"/>
+          <circle cx="36" cy="29" r="2.7"/>
+        </g>
+        <g class="logo-book">
+          <path d="M36 39.4c-6.4-4.6-16.6-6.6-27.6-5.6v12.4c11-1 21.2 1 27.6 5.6z"/>
+          <path d="M36 39.4c6.4-4.6 16.6-6.6 27.6-5.6v12.4c-11-1-21.2 1-27.6 5.6z"/>
+        </g>
+        <path class="logo-cover" d="M6.2 45.2v4.3c11.4-.9 22 1.1 29.8 5.8 7.8-4.7 18.4-6.7 29.8-5.8v-4.3c-11.4-.9-22 1-29.8 5.5-7.8-4.5-18.4-6.4-29.8-5.5z"/>
+      </svg>
+          <h3>Solstice Learning</h3>
+        </div>
+        <p style="margin:0" data-en="Online tutoring for BC Grade 9–12 students. Richmond, British Columbia." data-zh="为BC省9至12年级学生提供线上补习。卑诗省列治文市。" data-tw="爲BC省9至12年級學生提供線上補習。卑詩省列治文市。">Online tutoring for BC Grade 9–12 students. Richmond, British Columbia.</p>
+        <p style="margin:.7rem 0 0"><a href="mailto:hello@solsticelearning.ca">hello@solsticelearning.ca</a></p>
+      </div>
+      <div>
+        <h3 data-en="Company" data-zh="公司" data-tw="公司">Company</h3>
+        <ul>
+          <li><a href="#about" data-en="About us" data-zh="关于我们" data-tw="關於我們">About us</a></li>
+          <li><a href="#how" data-en="How it works" data-zh="上课流程" data-tw="上課流程">How it works</a></li>
+          <li><a href="#pricing" data-en="Pricing" data-zh="收费" data-tw="收費">Pricing</a></li>
+          <li><a href="#contact" data-en="Free consult" data-zh="免费咨询" data-tw="免費諮詢">Free consult</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-en="Courses" data-zh="科目" data-tw="科目">Courses</h3>
+        <ul>
+          <li><a href="#courses" data-en="Sciences" data-zh="理科" data-tw="理科">Sciences</a></li>
+          <li><a href="#courses" data-en="Mathematics" data-zh="数学" data-tw="數學">Mathematics</a></li>
+          <li><a href="#courses" data-en="Humanities &amp; ELL" data-zh="人文学科与英语" data-tw="人文學科與英語">Humanities &amp; ELL</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="legal" data-en="© 2026 Solstice Learning. Richmond, BC, Canada." data-zh="© 2026 Solstice Learning。加拿大卑诗省列治文市。" data-tw="© 2026 Solstice Learning。加拿大卑詩省列治文市。">© 2026 Solstice Learning. Richmond, BC, Canada.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- language toggle ---------- */
+  var btnEn = document.getElementById("btn-en");
+  var btnZh = document.getElementById("btn-zh");
+  var btnTw = document.getElementById("btn-tw");
+  var nodes = document.querySelectorAll("[data-en]");
+
+  var ATTR = { en: "data-en", zh: "data-zh", tw: "data-tw" };
+  var TAG  = { en: "en",      zh: "zh-Hans", tw: "zh-Hant" };
+
+  function setLang(lang) {
+    if (!ATTR[lang]) { lang = "en"; }
+    var attr = ATTR[lang];
+
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+      var next = el.getAttribute(attr);
+      if (next !== null) {
+        // innerHTML is required because some strings carry an &amp; entity.
+        el.innerHTML = next;
+      }
+    }
+
+    document.documentElement.lang = TAG[lang];
+    btnEn.setAttribute("aria-pressed", String(lang === "en"));
+    btnZh.setAttribute("aria-pressed", String(lang === "zh"));
+    btnTw.setAttribute("aria-pressed", String(lang === "tw"));
+
+    // remember the choice for next visit
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+  }
+
+  btnEn.addEventListener("click", function () { setLang("en"); });
+  btnZh.addEventListener("click", function () { setLang("zh"); });
+  btnTw.addEventListener("click", function () { setLang("tw"); });
+
+  // restore a saved choice, otherwise follow the browser's preference
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("lang"); } catch (e) {}
+
+    if (!saved) {
+      var nav = (navigator.language || "").toLowerCase();
+      if (nav.indexOf("zh") === 0) {
+        // zh-TW, zh-HK, zh-MO and any Hant tag get Traditional
+        saved = /hant|tw|hk|mo/.test(nav) ? "tw" : "zh";
+      }
+    }
+    if (saved && saved !== "en") { setLang(saved); }
+  })();
+
+  /* ---------- mobile menu ---------- */
+  var menuBtn = document.getElementById("menuBtn");
+  var mobileNav = document.getElementById("mobileNav");
+
+  function closeMenu() {
+    menuBtn.setAttribute("aria-expanded", "false");
+    mobileNav.hidden = true;
+  }
+
+  menuBtn.addEventListener("click", function () {
+    var isOpen = menuBtn.getAttribute("aria-expanded") === "true";
+    menuBtn.setAttribute("aria-expanded", String(!isOpen));
+    mobileNav.hidden = isOpen;
+  });
+
+  // tapping a link closes the panel so the target section is visible
+  mobileNav.addEventListener("click", function (e) {
+    if (e.target.tagName === "A") { closeMenu(); }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && menuBtn.getAttribute("aria-expanded") === "true") {
+      closeMenu();
+      menuBtn.focus();
+    }
+  });
+
+  /* ---------- highlight the tab for the section in view ---------- */
+  var tabs = [].slice.call(document.querySelectorAll("#tabs a"));
+  var sections = [];
+
+  for (var t = 0; t < tabs.length; t++) {
+    var target = document.querySelector(tabs[t].getAttribute("href"));
+    if (target) { sections.push(target); }
+  }
+
+  if (window.IntersectionObserver && sections.length) {
+    var observer = new IntersectionObserver(function (entries) {
+      for (var j = 0; j < entries.length; j++) {
+        if (!entries[j].isIntersecting) { continue; }
+        var id = "#" + entries[j].target.id;
+        for (var k = 0; k < tabs.length; k++) {
+          if (tabs[k].getAttribute("href") === id) {
+            tabs[k].setAttribute("aria-current", "true");
+          } else {
+            tabs[k].removeAttribute("aria-current");
+          }
+        }
+      }
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+
+    for (var s = 0; s < sections.length; s++) { observer.observe(sections[s]); }
+  }
+
+  /* ---------- enquiry form ----------
+     No backend is wired up yet. Point `action` at a form service
+     (Formspree, Netlify Forms, Basin) and delete this handler. */
+  var form = document.getElementById("inquiry");
+  var msg = document.getElementById("formMsg");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    var name = document.getElementById("f-name").value.trim();
+    var email = document.getElementById("f-email").value.trim();
+
+    var COPY = {
+      "en": {
+        fill: "Please fill in your name and email.",
+        bad:  "Please enter a valid email address.",
+        none: "The form is not connected to a backend yet, so nothing was sent."
+      },
+      "zh-Hans": {
+        fill: "请填写姓名与电子邮箱。",
+        bad:  "请输入有效的电子邮箱地址。",
+        none: "表单尚未连接后端，暂时无法发送。"
+      },
+      "zh-Hant": {
+        fill: "請填寫姓名與電郵地址。",
+        bad:  "請輸入有效的電郵地址。",
+        none: "表單尚未連接後端，暫時無法發送。"
+      }
+    };
+    var t = COPY[document.documentElement.lang] || COPY.en;
+
+    if (!name || !email) { msg.textContent = t.fill; return; }
+    if (email.indexOf("@") < 1 || email.indexOf(".") < 0) { msg.textContent = t.bad; return; }
+
+    msg.textContent = t.none;
+  });
+})();
+</script>
+
+</body>
+</html>
